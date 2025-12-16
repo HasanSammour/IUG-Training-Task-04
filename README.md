@@ -298,9 +298,9 @@ University Training Project – Educational Use Only
 
 ## 👨‍💻 Author
 
-**Student Name**
-University Training Task – Laravel Development
-🔗 GitHub: [https://github.com/yourusername](https://github.com/yourusername)
+**Hasan Younis Sammour**
+University Training Task – Back-end Development {Laravel framework}
+🔗 GitHub: [https://github.com/HasanSammour](https://github.com/HasanSammour)
 
 ---
 

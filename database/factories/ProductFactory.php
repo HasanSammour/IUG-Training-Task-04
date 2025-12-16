@@ -17,13 +17,14 @@ class ProductFactory extends Factory
     public function definition(): array
     {
          return [
-            'name' => $this->faker->words(rand(1, 3), true), // "Wireless Mouse", "Laptop Pro", etc
+            // ! Note here : Task04: Add unique to ensure unique fake values for the name
+            'name' => $this->faker->unique()->words(rand(1, 3), true), // "Wireless Mouse", "Laptop Pro", etc
             'price' => $this->faker->randomFloat(2, 10, 1000), // Price between 10-1000
             'description' => $this->faker->paragraph(rand(1, 3)), // 1-3 paragraphs
         ];
     }
 
-        /**
+    /**
      * Indicate that the product is expensive.
      */
     public function expensive(): static

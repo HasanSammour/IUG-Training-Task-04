@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-md-3 col-6 mb-3">
-            <div class="card text-center slide-in" style="animation-delay: 0.1s">
+            <div class="card text-center slide-in">
                 <div class="card-body">
                     <i class="fas fa-dollar-sign text-success fa-2x mb-2"></i>
                     <h3>${{ number_format($products->avg('price'), 2) }}</h3>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="col-md-3 col-6 mb-3">
-            <div class="card text-center slide-in" style="animation-delay: 0.2s">
+            <div class="card text-center slide-in">
                 <div class="card-body">
                     <i class="fas fa-arrow-up text-warning fa-2x mb-2"></i>
                     <h3>${{ number_format($products->max('price'), 2) }}</h3>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col-md-3 col-6 mb-3">
-            <div class="card text-center slide-in" style="animation-delay: 0.3s">
+            <div class="card text-center slide-in">
                 <div class="card-body">
                     <i class="fas fa-arrow-down text-info fa-2x mb-2"></i>
                     <h3>${{ number_format($products->min('price'), 2) }}</h3>
@@ -75,13 +75,17 @@
                         </thead>
                         <tbody>
                             @foreach($products as $product)
-                            <tr class="slide-in" style="animation-delay: {{ $loop->index * 0.05 }}s">
-                                <td><strong>#{{ $product->id }}</strong></td>
+                            <tr class="slide-in">
+                                <td>
+                                    <strong>#{{ $product->id }}</strong>
+                                </td>
                                 <td>
                                     <i class="fas fa-box text-primary me-2"></i>
                                     {{ $product->name }}
                                 </td>
-                                <td class="price-tag">${{ number_format($product->price, 2) }}</td>
+                                <td class="price-tag">
+                                    ${{ number_format($product->price, 2) }}
+                                </td>
                                 <td>
                                     @if($product->description)
                                         {{ Str::limit($product->description, 50) }}
@@ -89,7 +93,9 @@
                                         <span class="text-muted">No description</span>
                                     @endif
                                 </td>
-                                <td>{{ $product->created_at->format('M d, Y') }}</td>
+                                <td>
+                                    {{ $product->created_at->format('M d, Y') }}
+                                </td>
                                 <td class="action-btns">
                                     <a href="{{ route('products.show', $product) }}" 
                                        class="btn btn-sm btn-info" 

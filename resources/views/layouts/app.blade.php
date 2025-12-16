@@ -6,35 +6,17 @@
     <title>@yield('title') - Product CRUD</title>
     
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="{{ asset('font-awesome/css/all.min.css') }}" rel="stylesheet">
     
-    <!-- Simple Animations -->
+    <!-- Custom Animations CSS -->
+    <link href="{{ asset('bootstrap/css/animations.css') }}" rel="stylesheet">
+
+    <!-- Page-specific styles (minimal) -->
     <style>
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Custom Styles */
-        .fade-in { animation: fadeIn 0.6s ease; }
-        .slide-in { animation: slideIn 0.5s ease; }
-        .pulse-animation { animation: pulse 2s infinite; }
-        
+        /* I Only keep unique styles here, animations are in animations.css */
         .navbar-brand { font-weight: bold; }
         .btn { transition: all 0.3s; }
         .btn:hover { transform: translateY(-2px); }
@@ -49,16 +31,6 @@
         .table-hover tbody tr { transition: background 0.3s; }
         .table-hover tbody tr:hover { background: rgba(0,123,255,0.1); }
         
-        .alert { border: none; }
-        .badge { font-size: 0.9em; }
-        
-        footer { 
-            margin-top: 50px;
-            padding: 20px 0;
-            background: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-        }
-        
         .action-btns .btn { margin: 0 3px; }
         .price-tag { font-weight: bold; color: #28a745; }
         
@@ -67,18 +39,25 @@
             box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
         }
         
-        .stats-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-        
         .page-title {
             border-left: 5px solid #007bff;
             padding-left: 15px;
             margin-bottom: 30px;
+        }
+        
+        /* Ensure footer stays at bottom */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container.my-4 {
+            flex: 1;
+        }
+        
+        footer {
+            margin-top: auto;
         }
     </style>
 </head>
@@ -115,7 +94,7 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="container my-4">
+    <div class="container my-4 page-transition">
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show fade-in">
                 <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
@@ -134,35 +113,21 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-center text-muted">
+    <footer class="text-center text-muted fade-in">
         <div class="container">
             <p class="mb-0">
-                <i class="fas fa-code me-2"></i>Laravel Task 03 - Product CRUD System
+                <i class="fas fa-code me-2"></i>Laravel Task 04 - Product Validation & Data Integrity
             </p>
-            <small>University Training Project</small>
+            <small>IUG University Training Project</small>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     
-    <!-- Simple Scripts -->
-    <script>
-        // Auto-hide alerts after 5 seconds
-        setTimeout(() => {
-            document.querySelectorAll('.alert').forEach(alert => {
-                alert.classList.remove('show');
-            });
-        }, 5000);
-        
-        // Delete confirmation
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                if (!confirm('Are you sure you want to delete this product?')) {
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
+    <!-- Custom Animations JS -->
+    <script src="{{ asset('bootstrap/js/animations.js') }}"></script>
+    
+    @stack('scripts') <!-- For page-specific scripts > We can add it if there any in the pages that use this layout < -->
 </body>
 </html>

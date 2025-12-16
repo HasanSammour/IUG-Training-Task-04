@@ -54,7 +54,7 @@
     
     <div class="col-md-4">
         <!-- Action Card -->
-        <div class="card slide-in" style="animation-delay: 0.2s">
+        <div class="card slide-in">
             <div class="card-header bg-dark text-white">
                 <h5 class="mb-0">
                     <i class="fas fa-cogs me-2"></i>Actions
@@ -86,7 +86,7 @@
         </div>
         
         <!-- Quick Stats -->
-        <div class="card mt-4 slide-in" style="animation-delay: 0.3s">
+        <div class="card mt-4 slide-in">
             <div class="card-body text-center">
                 <i class="fas fa-box fa-4x text-primary mb-3"></i>
                 <h5>Product #{{ $product->id }}</h5>

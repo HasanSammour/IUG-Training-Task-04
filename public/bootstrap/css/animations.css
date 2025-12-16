@@ -1,0 +1,413 @@
+/* Task 03 & Part 01*/
+/* Animations */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateX(-10px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes slideInRight {
+    from { 
+        transform: translateX(10px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes borderGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0,123,255,0.3); }
+    50% { box-shadow: 0 0 15px rgba(0,123,255,0.6); }
+}
+
+/* NEW: Card hover animations */
+@keyframes cardHover {
+    from { 
+        transform: translateY(0) scale(1); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    to { 
+        transform: translateY(-8px) scale(1.02); 
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Custom Animation Classes */
+.fade-in { 
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 1;
+}
+
+.slide-in { 
+    animation: slideIn 0.6s ease-out forwards;
+    opacity: 1;
+}
+
+.slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+    opacity: 1;
+}
+
+.pulse-animation { 
+    animation: pulse 2s infinite ease-in-out; 
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Slide animations */
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-left {
+    animation: slideFromLeft 0.8s ease-out forwards;
+    opacity: 1;
+}
+
+.slide-right {
+    animation: slideFromRight 0.8s ease-out forwards;
+    opacity: 1;
+}
+
+/* Logo container styling */
+.logo-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid #e9ecef;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+.logo-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    border-color: #007bff;
+}
+
+/* Stats card with hover effects */
+.stats-card {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    opacity: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #00bcd4);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.stats-card:hover::before {
+    transform: translateX(0);
+}
+
+.stats-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Card hover animation classes */
+.card-hover-animate {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover-animate:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Logo images */
+.logo-image-container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.logo-image-container img {
+    object-fit: contain;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.logo-image-container img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Glowing button effect */
+.glow-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.glow-button:hover::before {
+    left: 100%;
+}
+
+/* Rotate on hover */
+.rotate-on-hover {
+    transition: transform 0.5s ease;
+}
+
+.rotate-on-hover:hover {
+    transform: rotateY(10deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slide-left, .slide-right {
+        animation-duration: 0.6s;
+    }
+    
+    .logo-card {
+        margin-bottom: 20px;
+        min-height: 160px;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Additional styles for the new sections */
+.bg-gradient-warning {
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(45deg, #17a2b8, #20c997);
+}
+
+/* Updated stats card for Task 04 */
+.stats-card-alt {
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    margin: 10px 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 1;
+}
+
+.stats-card-alt i {
+    transition: transform 0.3s ease;
+}
+
+.stats-card-alt:hover i {
+    transform: scale(1.2);
+}
+
+/* Common styles */
+.navbar-brand { font-weight: bold; }
+.btn { 
+    transition: all 0.3s; 
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 7px 14px rgba(0,0,0,0.1);
+}
+
+.card { 
+    border: none; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 1;
+}
+
+.card:hover { 
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.table-hover tbody tr { 
+    transition: all 0.3s; 
+}
+
+.table-hover tbody tr:hover { 
+    background: rgba(0,123,255,0.1);
+    transform: translateX(5px);
+}
+
+.alert { 
+    border: none; 
+    transition: all 0.3s;
+}
+
+.alert:hover {
+    transform: translateX(5px);
+}
+
+.badge { 
+    font-size: 0.9em; 
+    transition: all 0.3s;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+}
+
+footer { 
+    margin-top: 50px;
+    padding: 20px 0;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.action-btns .btn { 
+    margin: 0 3px; 
+    transition: all 0.3s;
+}
+
+.action-btns .btn:hover {
+    transform: scale(1.1);
+}
+
+.price-tag { 
+    font-weight: bold; 
+    color: #28a745; 
+    transition: all 0.3s;
+}
+
+.price-tag:hover {
+    transform: scale(1.1);
+}
+
+.form-control:focus { 
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    transform: translateY(-2px);
+}
+
+.page-title {
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.page-title:hover {
+    padding-left: 25px;
+    border-left-width: 8px;
+}
+
+/* Input focus animations */
+.form-control {
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+}
+
+/* Smooth fade-in for page transitions */
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-transition {
+    animation: pageFadeIn 0.6s ease-out;
+}
+
+.animate-in-view {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+/* ====================================== */
