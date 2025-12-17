@@ -57,10 +57,6 @@ php artisan migrate:fresh --seed
 app/Http/Requests/
                 ├── StoreProductRequest.php    # Create validation rules
                 └── UpdateProductRequest.php   # Update validation rules
-
-database/migrations/
-                └── xxxx_add_unique_to_products_name.php  # Unique constraint
-
 ---
 
 🎯 Key Improvements
