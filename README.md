@@ -54,60 +54,62 @@ php artisan migrate:fresh --seed
 ```
 ---
 ## 📁 New Files Structure
+```
 app/Http/Requests/
                 ├── StoreProductRequest.php    # Create validation rules
                 └── UpdateProductRequest.php   # Update validation rules
+```
 ---
 
 ## 🎯 Key Improvements
 
-Unique Product Names
+- Unique Product Names
 Prevents adding duplicate product names.
 
-Price Validation
+- Price Validation
 Price must be greater than 0 and follow decimal format.
 
-Smart Update Validation
+- Smart Update Validation
 Ignores the current product ID when checking for name uniqueness.
 
-Better UX
+- Better UX
 Clear validation error messages displayed under each form field.
 
-Clean Code
+- Clean Code
 Validation logic moved from controllers to Form Request classes.
 
 ---
 
 ## 🌐 How to Test
 
-Try adding a product with an existing name → ❌ Error shown
-Try entering price = 0 or a negative value → ❌ Error shown
-Submit the form with an empty name         → ❌ Error shown
-Update a product without changing its name → ✅ Works correctly
-Update a product using a duplicate name    → ❌ Error shown
+- Try adding a product with an existing name → ❌ Error shown
+- Try entering price = 0 or a negative value → ❌ Error shown
+- Submit the form with an empty name         → ❌ Error shown
+- Update a product without changing its name → ✅ Works correctly
+- Update a product using a duplicate name    → ❌ Error shown
 
 ---
 
 ## 🔍 Database Changes
--- Added to products table:
+- Added to products table:
 ALTER TABLE products ADD UNIQUE (name);
 
--- Price column remains:
--- DECIMAL(10,2)
+- Price column remains:
+DECIMAL(10,2)
 
 ---
 
 ## 🚀 Quick Start
 # If starting fresh:
+```
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
 php artisan serve
+```
 
----
-
-**Visit the application at:**
+**Then Visit the application at:**
 http://localhost:8000/products
 
 ---
