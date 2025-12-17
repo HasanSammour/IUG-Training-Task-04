@@ -51,15 +51,15 @@ php artisan migrate
 # Refresh database (optional)
 php artisan migrate:fresh --seed
 
+```
 ---
-
-📁 New Files Structure
+## 📁 New Files Structure
 app/Http/Requests/
                 ├── StoreProductRequest.php    # Create validation rules
                 └── UpdateProductRequest.php   # Update validation rules
 ---
 
-🎯 Key Improvements
+## 🎯 Key Improvements
 
 Unique Product Names
 Prevents adding duplicate product names.
@@ -78,7 +78,7 @@ Validation logic moved from controllers to Form Request classes.
 
 ---
 
-🌐 How to Test
+## 🌐 How to Test
 
 Try adding a product with an existing name → ❌ Error shown
 Try entering price = 0 or a negative value → ❌ Error shown
@@ -88,7 +88,7 @@ Update a product using a duplicate name    → ❌ Error shown
 
 ---
 
-🔍 Database Changes
+## 🔍 Database Changes
 -- Added to products table:
 ALTER TABLE products ADD UNIQUE (name);
 
@@ -97,7 +97,7 @@ ALTER TABLE products ADD UNIQUE (name);
 
 ---
 
-🚀 Quick Start
+## 🚀 Quick Start
 # If starting fresh:
 composer install
 cp .env.example .env
@@ -107,12 +107,12 @@ php artisan serve
 
 ---
 
-Visit the application at: 
+**Visit the application at:**
 http://localhost:8000/products
 
 ---
 
-📝 Note
+## 📝 Note
 This task extends Task 03 – Part 2 by adding validation and database integrity features,
 while maintaining all existing CRUD functionality.
 
